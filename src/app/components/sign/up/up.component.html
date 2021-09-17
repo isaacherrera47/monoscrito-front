@@ -1,0 +1,114 @@
+<h1>¡Bienvenido!</h1>
+<sub>Por favor, completa la siguiente información:</sub>
+<form [formGroup]="signUpForm" (ngSubmit)="create()">
+    <div>
+        <div class="input-login-container">
+            <input
+                type="text"
+                placeholder="Escuela"
+                formControlName="school"
+                [class.danger]="signUpForm.controls['school'].invalid && signUpForm.controls['school'].touched"
+                [class.success]="signUpForm.controls['school'].touched && signUpForm.controls['school'].valid">
+            <errors *ngIf="signUpForm.controls['school'].hasError('required') && signUpForm.controls['school'].touched" message="Este campo es necesario"></errors>
+            <errors *ngIf="signUpForm.controls['school'].hasError('minlength') && signUpForm.controls['school'].touched" message="Mínimo 3 caracteres"></errors>
+            <label>Escuela</label>
+        </div>
+    </div>
+    <div>
+        <div class="input-login-container">
+            <input
+                type="text"
+                placeholder="Nombre"
+                formControlName="name"
+                [class.danger]="signUpForm.controls['name'].invalid && signUpForm.controls['name'].touched"
+                [class.success]="signUpForm.controls['name'].touched && signUpForm.controls['name'].valid">
+            <errors *ngIf="signUpForm.controls['name'].hasError('required') && signUpForm.controls['name'].touched" message="Este campo es necesario"></errors>
+            <errors *ngIf="signUpForm.controls['name'].hasError('minlength') && signUpForm.controls['name'].touched" message="Mínimo 2 caracteres"></errors>
+            <label>Nombre</label>
+        </div>
+    </div>
+    <div>
+        <div class="input-login-container">
+            <input
+                type="text"
+                placeholder="Apellido"
+                formControlName="lastname"
+                [class.danger]="signUpForm.controls['lastname'].invalid && signUpForm.controls['lastname'].touched"
+                [class.success]="signUpForm.controls['lastname'].touched && signUpForm.controls['lastname'].valid">
+            <errors *ngIf="signUpForm.controls['lastname'].hasError('required') && signUpForm.controls['lastname'].touched" message="Este campo es necesario"></errors>
+            <errors *ngIf="signUpForm.controls['lastname'].hasError('minlength') && signUpForm.controls['lastname'].touched" message="Mínimo 2 caracteres"></errors>
+            <label>Apellido</label>
+        </div>
+    </div>
+    <div>
+        <div class="input-login-container">
+            <input
+                type="text"
+                placeholder="Correo electrónico"
+                formControlName="email"
+                [class.danger]="signUpForm.controls['email'].invalid && signUpForm.controls['email'].touched"
+                [class.success]="signUpForm.controls['email'].touched && signUpForm.controls['email'].valid">
+            <errors *ngIf="signUpForm.controls['email'].hasError('required') && signUpForm.controls['email'].touched" message="Este campo es necesario"></errors>
+            <errors *ngIf="signUpForm.controls['email'].hasError('email') && signUpForm.controls['email'].touched" message="Se necesita un formato de email válido"></errors>
+            <label>Correo electrónico</label>
+        </div>
+    </div>
+    <div>
+        <div class="input-login-container">
+            <input
+                type="text"
+                placeholder="Usuario"
+                formControlName="user"
+                [class.danger]="signUpForm.controls['user'].invalid && signUpForm.controls['user'].touched"
+                [class.success]="signUpForm.controls['user'].touched && signUpForm.controls['user'].valid">
+            <errors *ngIf="signUpForm.controls['user'].hasError('required') && signUpForm.controls['user'].touched" message="Este campo es necesario"></errors>
+            <errors *ngIf="signUpForm.controls['user'].hasError('minlength') && signUpForm.controls['user'].touched" message="Mínimo 2 caracteres"></errors>
+            <label>Usuario</label>
+        </div>
+    </div>
+    <div>
+        <div class="input-login-container">
+            <input
+                type="password"
+                placeholder="Contraseña"
+                formControlName="password"
+                [class.danger]="signUpForm.controls['password'].invalid && signUpForm.controls['password'].touched"
+                [class.success]="signUpForm.controls['password'].touched && signUpForm.controls['password'].valid">
+            <errors *ngIf="signUpForm.controls['password'].hasError('required') && signUpForm.controls['password'].touched" message="Este campo es necesario"></errors>
+            <errors *ngIf="signUpForm.controls['password'].hasError('minlength') && signUpForm.controls['password'].touched" message="Mínimo 8 caracteres"></errors>
+            <errors *ngIf="signUpForm.controls['password'].hasError('maxlength') && signUpForm.controls['password'].touched" message="Máximo 16 caracteres"></errors>
+            <label>Contraseña</label>
+        </div>
+    </div>
+    <div>
+        <div class="input-login-container">
+            <input
+                type="text"
+                placeholder="Psudónimo"
+                formControlName="nick"
+                [class.danger]="signUpForm.controls['nick'].invalid && signUpForm.controls['nick'].touched"
+                [class.success]="signUpForm.controls['nick'].touched && signUpForm.controls['nick'].valid">
+            <errors *ngIf="signUpForm.controls['nick'].hasError('required') && signUpForm.controls['nick'].touched" message="Este campo es necesario"></errors>
+            <errors *ngIf="signUpForm.controls['nick'].hasError('minlength') && signUpForm.controls['nick'].touched" message="Mínimo 2 caracteres"></errors>
+            <label>Pseudónimo (éste será el nombre con el que sus alumnos lo verán en la plataforma)</label>
+        </div>
+    </div>
+    <div class="avatares">
+        <span>Selecciona un avatar</span>
+        <label class="avatar" [class.active]="signUpForm.controls['avatar'].value === 'M'">
+            <picture>
+                <img src="../../../../assets/images/teachers/maestra.svg">
+            </picture>
+            <input type="radio" name="avatar" formControlName="avatar" value="M">
+        </label>
+        <label class="avatar" [class.active]="signUpForm.controls['avatar'].value === 'H'">
+            <picture>
+                <img src="../../../../assets/images/teachers/maestro.svg">
+            </picture>
+            <input type="radio" name="avatar" formControlName="avatar" value="H">
+        </label>
+    </div>
+    <div class="btn-container">
+        <button type="submit" class="btn primary big" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.16)'" [disabled]="!signUpForm.valid">Siguiente</button>
+    </div>
+</form>

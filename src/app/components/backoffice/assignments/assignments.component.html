@@ -1,0 +1,69 @@
+<section class="panel">
+    <h1 class="main-title">Asignaciones</h1>
+    <div class="loader-container" *ngIf="!loaderInit ; else Init" @LoaderInit>
+        <span class="loader"></span>
+    </div>
+    <ng-template #Init>
+        <form [formGroup]="form" (ngSubmit)="submit()" *ngIf="init !== null" @Content>
+            <div class="info">
+                <h2>Instrucciones:</h2>
+                <p>Escoger el ejercicio que deseas asignar de entre los que están creados, los alumnos a los que deseas asignarlo y ponle una fecha y hora de entrega. Puedes decidir si los ejercicios entregados fuera de tiempo se pueden recibir o no.</p>
+            </div>
+            <div class="row margin">
+                <div>
+                    <div class="input-login-container">
+                        <select
+                            type="text"
+                            placeholder="Escoge un ejercicio"
+                            formControlName="exercises"
+                            [class.danger]="form.controls['exercises'].invalid && form.controls['exercises'].touched"
+                            [class.success]="form.controls['exercises'].touched && form.controls['exercises'].valid">
+                            <option [value]="null" disabled selected>Escoge un ejercicio</option>
+                            <option *ngFor="let exercise of init.ejercicios" [value]="exercise.id">{{ exercise.nombre }}</option>
+                        </select>
+                        <errors *ngIf="form.controls['exercises'].hasError('required') && form.controls['exercises'].touched" message="Este campo es necesario"></errors>
+                    </div>
+                </div>
+                <div>
+                    <div class="input-login-container icon">
+                        <div>
+                            <input
+                                type="text"
+                                placeholder="Fecha y hora de entrega"
+                                formControlName="date"
+                                [class.danger]="form.controls['date'].invalid && form.controls['date'].touched"
+                                [class.success]="form.controls['date'].touched && form.controls['date'].valid"
+                                [owlDateTimeTrigger]="date"
+                                [owlDateTime]="date">
+                            <i class="fas fa-calendar-week"></i>
+                        </div>
+                        <errors *ngIf="form.controls['date'].hasError('required') && form.controls['date'].touched" message="Este campo es necesario"></errors>
+                        <owl-date-time [hour12Timer]="true" #date></owl-date-time>
+                    </div>
+                </div>
+                <div>
+                    <mat-checkbox color="primary" formControlName="status">Permitir entregas extratemporáneas</mat-checkbox>
+                </div>
+            </div>
+            <div class="students" formArrayName="students">
+                <div>
+                    <mat-checkbox color="primary" [formControl]="checkControl" (change)="checkAction()">Asignar a todos</mat-checkbox>
+                </div>
+                <div *ngFor="let studentInput of form.controls['students']?.controls; let index = index;" [formGroupName]="index">
+                    <mat-checkbox color="primary" [ngModel]="checked" formControlName="student" (change)="arrayToStudents(studentInput.value.student, init.alumnos[index].id)">{{ init.alumnos[index].nombres }}</mat-checkbox>
+                </div>
+            </div>
+            <div class="btns">
+                <button type="button" class="btn grey" (click)="cancel()" matRipple [matRippleColor]="'rgba(0, 0, 0, 0.08)'">Cancelar</button>
+                <button type="submit" class="btn primary" [disabled]="(form.valid && studentsId.length > 0) ? false : true" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.08)'">
+                    <span *ngIf="!loader ; else Loader" @Loader>Asignar</span>
+                    <ng-template #Loader>
+                        <picture @Loader>
+                            <img src="../../../../assets/images/loader.svg">
+                        </picture>
+                    </ng-template>
+                </button>
+            </div>
+        </form>
+    </ng-template>
+</section>

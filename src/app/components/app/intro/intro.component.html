@@ -1,0 +1,15 @@
+<section>
+    <video autoplay [muted]="muted" autoplay (ended)="videoEnded()">
+        <source src="../../../../assets/videos/intro.mp4" type="video/mp4">
+    </video>
+    <div class="actions">
+        <button type="button" (click)="mute()" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.16)'">
+            <i class="fas" [class.fa-volume-mute]="muted" [class.fa-volume-up]="!muted"></i>
+        </button>
+    </div>
+    <div class="actions right">
+        <button type="button" class="button rounded" (click)="videoEnded()">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+</section>

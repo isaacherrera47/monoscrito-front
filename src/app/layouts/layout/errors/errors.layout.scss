@@ -1,0 +1,10 @@
+@import 'src/assets/scss/vars';
+
+.error {
+    display: block;
+    width: 100%;
+    color: $danger;
+    font-weight: 500;
+    font-size: 12px;
+    padding: 2px 14px;
+}

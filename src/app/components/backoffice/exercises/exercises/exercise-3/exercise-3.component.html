@@ -1,0 +1,67 @@
+<section class="panel">
+    <h1 class="main-title">Escritura temática</h1>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="row margin">
+            <div>
+                <div class="input-login-container">
+                    <input
+                        type="text"
+                        placeholder="Nombre del ejercicio"
+                        formControlName="name"
+                        [class.danger]="form.controls['name'].invalid && form.controls['name'].touched"
+                        [class.success]="form.controls['name'].touched && form.controls['name'].valid">
+                    <errors *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched" message="Este campo es necesario"></errors>
+                    <errors *ngIf="form.controls['name'].hasError('minlnegth') && form.controls['name'].touched" message="Mínimo 2 caracteres"></errors>
+                    <label>Nombre del ejercicio</label>
+                </div>
+            </div>
+            <div>
+                <div class="input-login-container icon">
+                    <div>
+                        <input
+                            type="number"
+                            placeholder="Tiempo asignado"
+                            formControlName="time"
+                            [class.danger]="form.controls['time'].invalid && form.controls['time'].touched"
+                            [class.success]="form.controls['time'].touched && form.controls['time'].valid">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <errors *ngIf="form.controls['time'].hasError('required') && form.controls['time'].touched" message="Este campo es necesario"></errors>
+                    <label>Tiempo asignado (Segundos)</label>
+                </div>
+            </div>
+        </div>
+        <div class="info">
+            <h2>Instrucciones:</h2>
+            <p>Crea una narrativa de al menos 25 palabras, con máximo de 35. Con esta narrativa, tu alumnos tendrán que elaborar un párrafo de al menos 150 palabras. Puedes seleccionar el tiempo en el cual los niños deberían hacer la elaboración del texto. También puedes agregar una imagen que les facilite a los niños evocar la historia que les piden elaboren.</p>
+        </div>
+        <div class="row full margin">
+            <div>
+                <div class="input-login-container">
+                    <textarea
+                        placeholder="Escribe aquí las instrucciones"
+                        formControlName="instructions"
+                        [class.danger]="form.controls['instructions'].invalid && form.controls['instructions'].touched"
+                        [class.success]="form.controls['instructions'].touched && form.controls['instructions'].valid"
+                        maxlength="900"
+                        rows="5">
+                    </textarea>
+                    <errors *ngIf="form.controls['instructions'].hasError('required') && form.controls['instructions'].touched" message="Este campo es necesario"></errors>
+                    <errors *ngIf="form.controls['instructions'].hasError('minlength') && form.controls['instructions'].touched" message="Mínimo 2 caracteres"></errors>
+                    <errors *ngIf="form.controls['instructions'].hasError('maxlength') && form.controls['instructions'].touched" message="Máximo 900 caracteres"></errors>
+                </div>
+            </div>
+        </div>
+        <div class="btns">
+            <button type="button" class="btn grey" (click)="cancel()" matRipple [matRippleColor]="'rgba(0, 0, 0, 0.08)'">Cancelar</button>
+            <button type="submit" class="btn primary" [disabled]="!form.valid" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.08)'">
+                <span *ngIf="!loader ; else Loader" @Loader>Crear ejercicio</span>
+                <ng-template #Loader>
+                    <picture @Loader>
+                        <img src="../../../../assets/images/loader.svg">
+                    </picture>
+                </ng-template>
+            </button>
+        </div>
+    </form>
+</section>

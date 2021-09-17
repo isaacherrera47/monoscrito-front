@@ -1,0 +1,39 @@
+pipeline {
+  agent any
+  tools {
+      nodejs "nodejs"
+  }
+  environment {
+      DOCKER_DOCKERFILE = "cicd/Dockerfile"
+      DOCKER_IMAGE_NAME = "monoscrito/monoscrito-web"
+      DOCKER_IMAGE_TAG = "0.1"
+      DOCKER_CONTAINER_NAME = "monoscrito-web"
+  }
+  stages {
+    stage('Install Dependencies') {
+      steps {
+        sh "npm install"
+        sh "node -v"
+        sh "npm -v"
+        sh "ng version"
+      }
+    }
+    stage('Build') {
+      steps {
+        sh "npm run prod"
+      }
+    }
+    stage('Docker Build') {
+      steps {
+        sh "chmod -v 776  cicd/build.sh"
+        sh "./cicd/build.sh"
+      }
+    }
+    stage('Deploy') {
+      steps {
+        sh "chmod -v 776  cicd/deploy.sh"
+        sh "./cicd/deploy.sh"
+      }
+    }
+  }
+}

@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap');
+@import 'src/assets/scss/vars';
+@import 'src/assets/scss/buttons';
+
+.menu-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: $primary;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 130;
+    transition: all 0.16s ease-out;
+    i {
+        display: block;
+        width: calc(100% - 12px);
+        height: 3px;
+        margin-bottom: 4px;
+        background-color: white;
+        transition: all 0.16s ease-out;
+        border-radius: 6px;
+        &:first-of-type {
+            width: calc(100% - 16px);
+        }
+        &:last-of-type {
+            width: calc(100% - 16px);
+            margin-bottom: 0px;
+        }
+    }
+    &.active {
+        border-radius: 0px;
+        background-color: transparent;
+        i {
+            width: 100%;
+            background-color: transparent;
+            position: absolute;
+            margin-bottom: 0px;
+            &:first-of-type {
+                width: 100%;
+                transform: rotate(45deg);
+                background-color: $primary;
+            }
+            &:last-of-type {
+                width: 100%;
+                transform: rotate(-45deg);
+                background-color: $primary;
+            }
+        }
+    }
+}
+
+nav {
+    width: 100%;
+    height: 48px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 120;
+    background-color: #373A36;
+    box-shadow: 0px 3px 10px rgba($color: #000000, $alpha: 0.32);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > div {
+        width: calc(100% - 64px);
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+    }
+}
+
+.profile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: auto;
+    .logo {
+        display: inline-block;
+        margin-right: 32px;
+        picture {
+            width: 192px;
+            display: inline-block;
+            position: relative;
+            bottom: -12px;
+        }
+    }
+    .user {
+        margin-right: 32px;
+        display: inline-flex;
+        align-items: flex-start;
+        justify-content: center;
+        position: relative;
+        picture {
+            display: inline-block;
+            width: 46px;
+            margin-right: 8px;
+            position: relative;
+        }
+        span {
+            display: inline-block;
+            width: auto;
+            font-family: 'Oleo Script', cursive;
+            color: white;
+            font-size: 32px;
+        }
+    }
+    .actions {
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+        button {
+            margin-right: 8px;
+            &:last-of-type {
+                margin-right: 0px;
+            }
+        }
+    }
+}
+
+.menu {
+    display: inline-block;
+    a {
+        width: 224px;
+        height: 64px;
+        background-color: $warning;
+        color: black;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        margin-right: 16px;
+        transition: all 0.16s ease-out;
+        font-weight: 900;
+        &:last-of-type {
+            margin-right: 0px;
+        }
+        &.active {
+            background-color: $primary;
+            color: white;
+            height: 72px;
+        }
+    }
+}
+
+main {
+    background-color: white;
+    margin: auto;
+    width: calc(100% - 400px);
+    height: 100vh;
+    padding: 96px 0px;
+}
+
+@media screen and (max-width: 1540px) {
+    .menu {
+        a {
+            width: auto;
+            padding: 0px 32px;
+        }
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .menu-btn {
+        display: inline-flex;
+    }
+
+    nav {
+        width: 500px;
+        height: 500px;
+        top: 32px;
+        left: 32px;
+        display: block;
+        padding: 32px;
+        overflow-y: auto;
+        > div {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+
+    .profile {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 24px;
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-right: 0px;
+            picture {
+                width: 75%;
+                bottom: auto;
+            }
+        }
+        .user {
+            margin-right: 0px;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .actions {
+            display: block;
+        }
+    }
+
+    .menu {
+        display: block;
+        width: 100%;
+        a {
+            width: 100%;
+            margin-bottom: 16px;
+            margin-right: 0px;
+            border-radius: 12px;
+            padding: 0px;
+            &:last-of-type {
+                margin-bottom: 0px;
+            }
+        }
+    }
+
+    main {
+        width: calc(100% - 64px);
+        height: auto;
+        margin: 32px auto;
+        padding: 16px;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    nav {
+        width: calc(100% - 64px);
+        height: auto;
+    }
+}
+
+@media all and (orientation: landscape) and (max-width: 740px) {
+    nav {
+        width: 500px;
+        height: calc(100vh - 64px);
+    }
+}

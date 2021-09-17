@@ -1,0 +1,40 @@
+<div class="dialog big">
+    <header>Detective Ortográfico | {{ data.name }} | {{ data.type }} </header>
+    <section>
+        <form [formGroup]="form">
+            <div>
+                <div class="input-login-container icon">
+                    <div>
+                        <textarea
+                            placeholder="Texto bueno"
+                            formControlName="good"
+                            [class.danger]="form.controls['good'].invalid && form.controls['good'].touched"
+                            [class.success]="form.controls['good'].touched && form.controls['good'].valid">
+                        </textarea>
+                    </div>
+                    <errors *ngIf="form.controls['good'].hasError('required') && form.controls['good'].touched" message="Este campo es necesario"></errors>
+                    <label>Texto bueno</label>
+                </div>
+            </div>
+            <div>
+                <div class="input-login-container icon">
+                    <div>
+                        <textarea
+                            placeholder="Texto malo"
+                            formControlName="bad"
+                            [ngModel]="form.controls['good'].value"
+                            [class.danger]="form.controls['bad'].invalid && form.controls['bad'].touched"
+                            [class.success]="form.controls['bad'].touched && form.controls['bad'].valid">
+                        </textarea>
+                    </div>
+                    <errors *ngIf="form.controls['bad'].hasError('required') && form.controls['bad'].touched" message="Este campo es necesario"></errors>
+                    <label>Texto malo</label>
+                </div>
+            </div>
+        </form>
+    </section>
+    <footer>
+        <button type="button" class="btn white" matRipple [matRippleColor]="'rgba(0, 0, 0, 0.08)'" mat-dialog-close>Cerrar</button>
+        <button type="button" class="btn primary" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.08)'" [disabled]="!form.valid" (click)="save()">Crear tarea</button>
+    </footer>
+</div>

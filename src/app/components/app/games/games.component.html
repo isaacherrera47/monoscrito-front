@@ -1,0 +1,72 @@
+<section>
+    <figure>
+        <picture>
+            <img src="../../../../assets/images/teachers/maestra.svg">
+        </picture>
+        <figcaption>¡Hola {{ student }}!</figcaption>
+    </figure>
+    <menu>
+        <div>
+            <a [routerLink]="'/app/mis-juegos'">
+                <div class="menu-button">
+                    <picture>
+                        <img src="../../../../assets/images/exercises/lectura.png">
+                    </picture>
+                    <h6>
+                        <span class="medium">¡Quiero</span>
+                        <span class="medium">leer algo!</span>
+                    </h6>
+                </div>
+            </a>
+            <a [routerLink]="'/app/mis-juegos'">
+                <div class="menu-button">
+                    <picture>
+                        <img src="../../../../assets/images/exercises/escucho.png">
+                    </picture>
+                    <h6>
+                        <span class="medium">Escucho</span>
+                        <span class="medium">y escribo</span>
+                    </h6>
+                </div>
+            </a>
+            <a [routerLink]="'/app/mis-juegos'">
+                <div class="menu-button">
+                    <picture>
+                        <img src="../../../../assets/images/exercises/escritura.png">
+                    </picture>
+                    <h6>
+                        <span class="medium">Soy</span>
+                        <span class="medium">Escritor</span>
+                    </h6>
+                </div>
+            </a>
+        </div>
+        <div>
+            <a [routerLink]="'/app/mis-juegos'">
+                <div class="menu-button">
+                    <picture>
+                        <img src="../../../../assets/images/exercises/detective.png">
+                    </picture>
+                    <h6>
+                        <span class="medium">Detective</span>
+                        <span class="medium">ortográfico</span>
+                    </h6>
+                </div>
+            </a>
+            <a [routerLink]="'/app/mis-juegos'">
+                <div class="menu-button">
+                    <picture>
+                        <img src="../../../../assets/images/exercises/seperdieron.png">
+                    </picture>
+                    <h6>
+                        <span class="medium">Se perdieron</span>
+                        <span class="medium">letras</span>
+                    </h6>
+                </div>
+            </a>
+        </div>
+    </menu>
+    <a routerLink="/app" class="button rounded back">
+        <i class="fas fa-chevron-left"></i>
+    </a>
+</section>

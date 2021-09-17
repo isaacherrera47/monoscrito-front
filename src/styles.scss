@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600;900&display=swap');
+@import '~@fortawesome/fontawesome-free/css/all.css';
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+@import 'assets/scss/snackbars';
+
+* {
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #FAFAFA;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    display: inline-block;
+}
+
+.mat-dialog-container {
+    padding: 0 !important;
+}

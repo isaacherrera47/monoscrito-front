@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap');
+@import 'src/assets/scss/vars';
+@import 'src/assets/scss/buttons';
+@import 'src/assets/scss/inputs';
+@import 'src/assets/scss/panels';
+@import 'src/assets/scss/tables';
+
+.main-text {
+    font-family: 'Oleo Script', cursive;
+    display: block;
+    width: 100%;
+    margin-bottom: 24px;
+    font-size: 18px;
+    text-align: center;
+    color: $grey;
+}
+
+.info {
+    display: block;
+    margin-bottom: 24px;
+    h2 {
+        display: block;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+    p {
+        text-align: center;
+        font-weight: 300;
+    }
+}
+
+.btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 36px;
+}

@@ -1,0 +1,94 @@
+@import 'src/assets/scss/vars';
+@import 'src/assets/scss/buttons';
+@import 'src/assets/scss/inputs';
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap');
+
+.content {
+    width: 100%;
+    padding: 0px 128px;
+    &.flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: calc(100vh - 96px);
+        padding: 0px;
+    }
+}
+
+.create-group {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 24px;
+    display: inline-block;
+    width: auto;
+    margin-bottom: 24px;
+    font-family: 'Oleo Script', cursive;
+    color: $grey;
+}
+
+.subtitle {
+    display: block;
+    text-align: center;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.new-group {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    > div {
+        display: inline-block;
+        &:first-of-type {
+            width: calc(75% - 8px);
+        }
+        &:last-of-type {
+            width: calc(25% - 8px);
+        }
+    }
+}
+
+.array-inputs {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    &:last-of-type {
+        margin-bottom: 0px;
+    }
+    > div {
+        display: inline-block;
+        width: calc(100% / 4 - 16px);
+    }
+}
+
+.counter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 49px;
+    font-weight: 500;
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.footer-groups {
+    width: 100%;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-right {
+    margin-right: 8px;
+}

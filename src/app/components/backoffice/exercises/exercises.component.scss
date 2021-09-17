@@ -1,0 +1,116 @@
+@import 'src/assets/scss/vars';
+@import 'src/assets/scss/buttons';
+@import 'src/assets/scss/inputs';
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap');
+
+.container {
+    width: 100%;
+    height: calc(100vh - 96px);
+    padding: 0px 128px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.content {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h1 {
+        display: inline-block;
+        width: auto;
+        font-family: 'Oleo Script', cursive;
+        color: $grey;
+        margin-bottom: 24px;
+        font-size: 18px;
+    }
+    .row {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        > div {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: calc(100% / 3);
+        }
+        &.two {
+            justify-content: center;
+            margin-top: 24px;
+        }
+    }
+}
+
+.exercise {
+    width: calc(100% - 64px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    position: relative;
+    picture {
+        display: block;
+        width: 100%;
+        padding: 0px 64px;
+        position: relative;
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
+    span {
+        font-size: 36px;
+        display: inline-block;
+        font-family: 'Oleo Script', cursive;
+        color: $grey;
+        white-space: pre-line;
+        position: relative;
+    }
+    &::before {
+        content: '';
+        width: 176px;
+        height: 176px;
+        border-radius: 50%;
+        background-color: rgba(255, 198, 0, 0.25);
+        position: absolute;
+        transform: scale(0);
+        transition: all 0.16s;
+    }
+    &:hover {
+        &::before {
+            transform: scale(1);
+        }
+    }
+}
+
+.btns {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 32px;
+    left: 0px;
+}
+
+@media screen and (max-width: 1540px) {
+    .container {
+        padding: 0px 128px;
+    }
+
+    .exercise {
+        picture {
+            padding: 0px 16px;
+        }
+        span {
+            font-size: 32px;
+        }
+    }
+}

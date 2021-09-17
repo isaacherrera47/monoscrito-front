@@ -1,0 +1,124 @@
+@import 'src/assets/scss/vars';
+@import 'src/assets/scss/buttons';
+@import 'src/assets/scss/inputs';
+@import 'src/assets/scss/panels';
+
+.main-title {
+    display: block;
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    font-style: italic;
+    color: $grey;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    &.margin {
+        margin-bottom: 16px;
+    }
+    > div {
+        display: inline-block;
+        &:first-of-type {
+            width: calc(100% / 4 * 3 - 8px);
+        }
+        &:last-of-type {
+            width: calc(100% / 4 - 8px);
+        }
+    }
+    &.full {
+        > div {
+            width: 100%;
+        }
+    }
+    &.one {
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 48px;
+        > div {
+            width: 50%;
+        }
+    }
+}
+
+.info {
+    display: block;
+    margin-bottom: 16px;
+    h2 {
+        display: block;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+    p {
+        text-align: justify;
+        font-weight: 300;
+    }
+}
+
+.btns {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+        &:first-of-type {
+            margin-right: 8px;
+        }
+    }
+}
+
+// Dialog
+.dialog-readings {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 120;
+    background-color: rgba($color: #000000, $alpha: 0.32);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    section {
+        width: 75%;
+        background-color: #FAFAFA;
+        padding: 16px 24px;
+        position: relative;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-flow: wrap row;
+        .close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: $grey;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -16px;
+            right: -16px;
+            border: none;
+            cursor: pointer;
+        }
+        .reading {
+            display: inline-block;
+            width: calc(100% / 5);
+            cursor: pointer;
+            padding: 12px;
+            text-align: center;
+            background-color: transparent;
+            border: none;
+            text-align: justify;
+            font-size: 14px;
+            font-weight: 300;
+        }
+    }
+}

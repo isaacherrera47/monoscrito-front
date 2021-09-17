@@ -1,0 +1,43 @@
+<section [class.panel-1]="progress < 50" [class.panel-2]="progress > 50 && progress < 75" [class.panel-3]="progress > 75">
+    <nav>
+        <!-- Background -->
+        <img class="image" src="../../../../assets/images/dashboard/barras-02.svg">
+        <!-- Profile -->
+        <figure>
+            <picture>
+                <img src="../../../../assets/images/teachers/maestra.svg">
+            </picture>
+            <figcaption>¡Hola {{ student }}!</figcaption>
+        </figure>
+        <!-- Progress bar -->
+        <div class="progress-bar">
+            <span>avance de la misión</span>
+            <div class="bar">
+                <span [class.red]="progress < 50" [class.blue]="progress > 50 && progress < 75" [class.cyan]="progress > 75" [ngStyle]="{'width': progress + '%'}"></span>
+            </div>
+        </div>
+        <!-- Button message -->
+        <button type="button" class="msg">
+            <i class="fas fa-envelope"></i>
+        </button>
+    </nav>
+    <footer>
+        <!-- Background -->
+        <img class="image" src="../../../../assets/images/dashboard/barras-01.svg">
+        <button type="button" (click)="navigation('/app', 'home')" [@bounce]="bounceType === 'home' ? 'active' : 'initial'">
+            <picture>
+                <img src="../../../../assets/images/dashboard-buttons/b_las_reglas.svg">
+            </picture>
+        </button>
+        <button type="button" (click)="navigation('/app/mis-tareas', 'myTasks')" class="center" [disabled]="!hasTasks" [@bounce]="bounceType === 'myTasks' ? 'active' : 'initial'">
+            <picture>
+                <img src="../../../../assets/images/dashboard-buttons/{{ hasTasks ? 'b_mis_tareas' : 'b_mis tareas_dis' }}.svg">
+            </picture>
+        </button>
+        <button type="button" (click)="navigation('/app/mis-juegos', 'myGames')" [@bounce]="bounceType === 'myGames' ? 'active' : 'initial'">
+            <picture>
+                <img src="../../../../assets/images/dashboard-buttons/b_mis_juegos.svg">
+            </picture>
+        </button>
+    </footer>
+</section>

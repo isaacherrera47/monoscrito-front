@@ -1,0 +1,72 @@
+<section class="panel">
+    <h1 class="main-title">Lecturas</h1>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="row margin">
+            <div>
+                <div class="input-login-container">
+                    <input
+                        type="text"
+                        placeholder="Nombre del ejercicio"
+                        formControlName="name"
+                        [class.danger]="form.controls['name'].invalid && form.controls['name'].touched"
+                        [class.success]="form.controls['name'].touched && form.controls['name'].valid">
+                    <errors *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched" message="Este campo es necesario"></errors>
+                    <errors *ngIf="form.controls['name'].hasError('minlnegth') && form.controls['name'].touched" message="Mínimo 2 caracteres"></errors>
+                    <label>Nombre del ejercicio</label>
+                </div>
+            </div>
+            <div>
+                <div class="input-login-container icon">
+                    <div>
+                        <input
+                            type="number"
+                            placeholder="Tiempo asignado"
+                            formControlName="time"
+                            [class.danger]="form.controls['time'].invalid && form.controls['time'].touched"
+                            [class.success]="form.controls['time'].touched && form.controls['time'].valid">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <errors *ngIf="form.controls['time'].hasError('required') && form.controls['time'].touched" message="Este campo es necesario"></errors>
+                    <label>Tiempo asignado (Segundos)</label>
+                </div>
+            </div>
+        </div>
+        <div class="info">
+            <h2>Instrucciones:</h2>
+            <p>Selecciona una de las lecturas de la lista que se encuentra debajo. Deberás también asignarle un tiempo. Todas las lecturas pertenecen al libro de lecturas de cuarto grado, de la Comisión Nacional de Libros de Texto Gratuitos (CONALITEG). Si lo prefieres, puedes subir lecturas en formato PDF. Los archivos no deberán exceder los 5 MB. Asegúrate de que puedes diseminar estas lecturas sin infringir derechos de autor.</p>
+        </div>
+        <div class="row one">
+            <div>
+                <div class="input-login-container icon">
+                    <div>
+                        <input
+                            type="string"
+                            placeholder="Selecciona una lectura"
+                            formControlName="reading"
+                            [class.danger]="form.controls['reading'].invalid && form.controls['reading'].touched"
+                            [class.success]="form.controls['reading'].touched && form.controls['reading'].valid"
+                            (focus)="selectingReading()">
+                            <i class="fas fa-book"></i>
+                    </div>
+                    <errors *ngIf="form.controls['reading'].hasError('required') && form.controls['reading'].touched" message="Este campo es necesario"></errors>
+                </div>
+            </div>
+        </div>
+        <div class="btns">
+            <button type="button" class="btn grey" (click)="cancel()" matRipple [matRippleColor]="'rgba(0, 0, 0, 0.08)'">Cancelar</button>
+            <button type="submit" class="btn primary" [disabled]="!form.valid" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.08)'">
+                <span *ngIf="!loader ; else Loader" @Loader>Crear ejercicio</span>
+                <ng-template #Loader>
+                    <picture @Loader>
+                        <img src="../../../../assets/images/loader.svg">
+                    </picture>
+                </ng-template>
+            </button>
+        </div>
+    </form>
+</section>
+<div class="dialog-readings" *ngIf="dialogStatus" @Dialog>
+    <section>
+        <button type="button" class="reading" *ngFor="let reading of readings" (click)="selectedReading(reading)" matRipple [matRippleColor]="'rgba(0, 0, 0, 0.08)'">{{ reading }}</button>
+    </section>
+</div>

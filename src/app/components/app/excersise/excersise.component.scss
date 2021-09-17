@@ -1,0 +1,100 @@
+@import '../../../../assets/scss/vars';
+@import '../../../../assets/scss/buttons';
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap');
+
+section {
+    width: 100%;
+    height: 100vh;
+    background-image: url('../../../../assets/images/backgrounds/dictado.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.exercises {
+    width: 100%;
+    height: 100vh;
+    padding: 230px 200px 24px 200px;
+    background-color: rgba($color: #000000, $alpha: 0.64);
+    color: white;
+    .content {
+        h1 {
+            font-family: 'Oleo Script', cursive;
+            font-size: 24px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            li {
+                display: block;
+                width: auto;
+                margin-bottom: 16px;
+                &:last-of-type {
+                    margin-bottom: 0px;
+                }
+                button {
+                    height: 40px;
+                    width: auto;
+                    background-color: $primary;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0 24px;
+                    font-weight: 900;
+                    border-radius: 24px;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+.player {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 16px;
+}
+
+.margin-right {
+    margin-right: 9px;
+}
+
+form {
+    position: absolute;
+    top: 243px;
+    left: 210px;
+    textarea {
+        width: 735px;
+        height: 489px;
+        font-weight: 300;
+        font-size: 36px;
+        line-height: 1.2em;
+        background-color: transparent;
+        border: none;
+        &::placeholder {
+            font-weight: 300;
+            color: rgba($color: #000000, $alpha: 0.64);
+            font-style: italic;
+        }
+    }
+} 

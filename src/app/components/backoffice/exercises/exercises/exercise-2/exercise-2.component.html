@@ -1,0 +1,50 @@
+<section class="panel">
+    <h1 class="main-title">Dictado</h1>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="row margin">
+            <div>
+                <div class="input-login-container">
+                    <input
+                        type="text"
+                        placeholder="Nombre del ejercicio"
+                        formControlName="name"
+                        [class.danger]="form.controls['name'].invalid && form.controls['name'].touched"
+                        [class.success]="form.controls['name'].touched && form.controls['name'].valid">
+                    <errors *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched" message="Este campo es necesario"></errors>
+                    <errors *ngIf="form.controls['name'].hasError('minlnegth') && form.controls['name'].touched" message="Mínimo 2 caracteres"></errors>
+                    <label>Nombre del ejercicio</label>
+                </div>
+            </div>
+            <div>
+                <div class="input-login-container icon">
+                    <div>
+                        <input
+                            type="number"
+                            placeholder="Tiempo asignado"
+                            formControlName="time"
+                            [class.danger]="form.controls['time'].invalid && form.controls['time'].touched"
+                            [class.success]="form.controls['time'].touched && form.controls['time'].valid">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <errors *ngIf="form.controls['time'].hasError('required') && form.controls['time'].touched" message="Este campo es necesario"></errors>
+                    <label>Tiempo asignado (Segundos)</label>
+                </div>
+            </div>
+        </div>
+        <div class="info">
+            <h2>Instrucciones:</h2>
+            <p>Utiliza los botones debajo para grabar un dictado. Puedes pausar el dictado dando click en el botón pausa una vez que hayas comenzado a grabar y volver a grabar si pausaste haciendo click en el mismo botón. Cuando termines, puedes escuchar tu grabación y guardarla o borrarla y comenzar de nuevo.</p>
+        </div>
+        <div class="btns">
+            <button type="button" class="btn grey" (click)="cancel()" matRipple [matRippleColor]="'rgba(0, 0, 0, 0.08)'">Cancelar</button>
+            <button type="submit" class="btn primary" [disabled]="!form.valid" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.08)'">
+                <span *ngIf="!loader ; else Loader" @Loader>Crear ejercicio</span>
+                <ng-template #Loader>
+                    <picture @Loader>
+                        <img src="../../../../assets/images/loader.svg">
+                    </picture>
+                </ng-template>
+            </button>
+        </div>
+    </form>
+</section>

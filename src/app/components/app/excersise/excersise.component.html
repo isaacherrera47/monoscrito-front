@@ -1,0 +1,37 @@
+<section>
+    <div class="exercises" *ngIf="task !== null && task.tasks.length > 1">
+        <div class="content">
+            <h1>Tienes más de un ejercicio asignado. Escoge cuál quieres resolver primero:</h1>
+            <ul>
+                <li *ngFor="let task of task">
+                    <button type="button" (click)="selectTask(task.idAsignacion)" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.16)'">
+                        {{ task.nombre }}
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <header class="header">
+        <button type="button" class="btn flex primary" (click)="sendTask()">
+            Enviar
+        </button>
+        <div class="player">
+            <button type="button" class="button rounded big margin-right" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.16)'" (click)="audioPlayerActions('load')">
+                <i class="fas fa-fast-backward"></i>
+            </button>
+            <button type="button" class="button rounded big margin-right">
+                <i class="fas fa-undo"></i>
+            </button>
+            <button type="button" class="button rounded extra-big orange margin-right" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.16)'" (click)="audioPlayerActions(play ? 'play' : 'pause')">
+                <i class="fas" [class.fa-play]="play" [class.fa-pause]="!play"></i>
+            </button>
+            <audio #audioPlayer (ended)="audioPlayerActions('load')">
+                <source src="../../../../assets/audios/audio.ogg" type="audio/ogg">
+            </audio>
+        </div>
+    </header>
+    <form [formGroup]="form" class="content">
+        <textarea formControlName="text" placeholder="Escribe el dictado..."></textarea>
+    </form>
+</section>
+<feedback *ngIf="feedback" message="20"></feedback>

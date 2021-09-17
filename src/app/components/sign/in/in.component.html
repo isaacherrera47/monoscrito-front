@@ -1,0 +1,40 @@
+<form [formGroup]="signInForm" (ngSubmit)="login()">
+    <div>
+        <div class="input-login-container">
+            <input
+                type="text"
+                placeholder="Usuario"
+                formControlName="user"
+                [class.danger]="signInForm.controls['user'].invalid && signInForm.controls['user'].touched"
+                [class.success]="signInForm.controls['user'].touched && signInForm.controls['user'].valid">
+            <errors *ngIf="signInForm.controls['user'].hasError('required') && signInForm.controls['user'].touched" message="Este campo es necesario"></errors>
+            <label>Usuario</label>
+        </div>
+    </div>
+    <div>
+        <div class="input-login-container">
+            <input
+                type="password"
+                placeholder="Contraseña"
+                formControlName="password"
+                maxlength="16"
+                [class.danger]="signInForm.controls['password'].touched && !signInForm.controls['password'].valid"
+                [class.success]="signInForm.controls['password'].touched && signInForm.controls['password'].valid">
+            <errors *ngIf="signInForm.controls['password'].hasError('required') && signInForm.controls['password'].touched" message="Este campo es necesario"></errors>
+            <errors *ngIf="signInForm.controls['password'].hasError('minlength') && signInForm.controls['password'].touched" message="Mínimo 8 caracteres"></errors>
+            <errors *ngIf="signInForm.controls['password'].hasError('maxlength') && signInForm.controls['password'].touched" message="Mínimo 16 caracteres"></errors>
+            <label>Contraseña</label>
+        </div>
+    </div>
+    <div class="btn-container">
+        <mat-checkbox color="primary" formControlName="teacher">¿Eres maestro?</mat-checkbox>
+        <button type="submit" class="btn primary big" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.16)'" [disabled]="!signInForm.valid">
+            <span *ngIf="!loader ; else Loader" @Loader>Entrar</span>
+            <ng-template #Loader>
+                <picture @Loader>
+                    <img src="../../../../assets/images/loader.svg">
+                </picture>
+            </ng-template>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,49 @@
+<span class="menu-btn" type="button" [class.active]="menuStatus" (click)="activeMenu()">
+    <i></i>
+    <i></i>
+    <i></i>
+</span>
+<nav (window:resize)="onResize($event)" [@Menu]="menuStatus ? 'show' : 'hide'">
+    <div>
+        <div class="profile">
+            <div class="logo">
+                <picture>
+                    <img src="../../../assets/images/logo.svg">
+                </picture>
+            </div>
+            <div class="user">
+                <picture *ngIf="teacher === 'H'">
+                    <img src="../../../assets/images/teachers/maestro.svg">
+                </picture>
+                <picture *ngIf="teacher === 'M'">
+                    <img src="../../../assets/images/teachers/maestra.svg">
+                </picture>
+                <span>
+                    ¡Hola {{ teacherType }} {{ teacherName }}!
+                </span>
+            </div>
+            <div class="actions">
+                <button class="btn primary rounded" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.16)'">
+                    <i class="far fa-calendar-minus"></i>
+                </button>
+                <button class="btn primary rounded" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.16)'">
+                    <i class="far fa-bell"></i>
+                </button>
+                <button class="btn primary rounded" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.16)'" (click)="signout()">
+                    <i class="fas fa-power-off"></i>
+                </button>
+            </div>
+        </div>
+        <div class="menu">
+            <a *ngFor="let route of nav" [routerLink]="route.url" [class.active]="
+                url === route.url ||
+                ((url === '/ejercicios/quiero-leer-algo' && route.title === 'Ejercicios') || (url === '/ejercicios/lista-de-ejercicios' && route.title === 'Ejercicios'))
+            " matRipple [matRippleColor]="'rgba(255, 255, 255, 0.16)'" (click)="menuStatus = width > 1400 ? true : false">
+                {{ route.title }}
+            </a>
+        </div>
+    </div>
+</nav>
+<main>
+    <router-outlet></router-outlet>
+</main>

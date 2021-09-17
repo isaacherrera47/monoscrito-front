@@ -1,0 +1,25 @@
+<div class="feedback"
+    (click)="feedbackRedirect()"
+    @Feedback
+    [class.danger]="message < 5 ? true : false"
+    [class.success]="message > 15 ? true : false"
+    [class.normal]="message < 15 ? true : false">
+    <div>
+        <picture>
+            <source srcset="../../../../assets/images/feedback/{{
+                message >= 15 ? 'excelente' :
+                null
+            }}.svg">
+            <img src="../../../../assets/images/feedback/{{
+                message >= 15 ? 'excelente' :
+                null
+            }}.svg">
+        </picture>
+        <span>{{
+            message >= 15 ? '¡Excelente!' :
+            null
+        }}</span>
+        <p>Has aportado <strong>{{ message }} de 20</strong> puntos posibles a la misión.</p>
+        <small>¡Tu esfuerzo ayudará a detener el avance de Dominico!</small>
+    </div>
+</div>

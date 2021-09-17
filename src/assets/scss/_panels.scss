@@ -1,0 +1,11 @@
+.panel {
+    width: 100%;
+    padding: 0px 256px;
+    position: relative;
+}
+
+@media screen and (max-width: 1540px) {
+    .panel {
+        padding: 0px 128px;
+    }
+}

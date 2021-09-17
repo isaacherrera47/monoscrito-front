@@ -1,0 +1,57 @@
+<section class="container">
+    <div class="content" @Container>
+        <h1>¡Aún no tienes ejercicios creados, crea uno!</h1>
+        <div class="row">
+            <div @Item>
+                <button type="button" class="exercise" (click)="navTo('/quiero-leer-algo')">
+                    <picture>
+                        <img src="../../../../assets/images/exercises/lectura.png">
+                    </picture>
+                    <span>¡quiero
+                    leer algo!</span>
+                </button>
+            </div>
+            <div @Item>
+                <button type="button" class="exercise" (click)="navTo('/escucho-y-escribo')">
+                    <picture>
+                        <img src="../../../../assets/images/exercises/escucho.png">
+                    </picture>
+                    <span>escucho
+                    y escribo</span>
+                </button>
+            </div>
+            <div @Item>
+                <button type="button" class="exercise" (click)="navTo('/soy-escritor')">
+                    <picture>
+                        <img src="../../../../assets/images/exercises/escritura.png">
+                    </picture>
+                    <span>soy
+                    escritor</span>
+                </button>
+            </div>
+        </div>
+        <div class="row two">
+            <div @Item>
+                <button type="button" class="exercise" (click)="navTo('/detective-ortografico')">
+                    <picture>
+                        <img src="../../../../assets/images/exercises/detective.png">
+                    </picture>
+                    <span>detective
+                    ortográfico</span>
+                </button>
+            </div>
+            <div @Item>
+                <button type="button" class="exercise" (click)="navTo('/se-perdieron-letras')">
+                    <picture>
+                        <img src="../../../../assets/images/exercises/seperdieron.png">
+                    </picture>
+                    <span>se perdieron
+                    letras...</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="btns">
+        <button type="button" class="btn primary" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.16)'" (click)="navTo('/lista-de-ejercicios')">Ver creados</button>
+    </div>
+</section>

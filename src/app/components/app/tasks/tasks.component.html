@@ -1,0 +1,26 @@
+<section>
+    <figure>
+        <picture>
+            <img src="../../../../assets/images/teachers/maestra.svg">
+        </picture>
+        <figcaption>¡Hola {{ student }}!</figcaption>
+    </figure>
+    <menu>
+        <a [routerLink]="['/app/ejercicio', { id: task.tarea }]" *ngFor="let task of tasks">
+            <div class="menu-button">
+                <picture>
+                    <img src="../../../../assets/images/exercises/{{
+                        task.tarea === 'QUIERO LEER ALGO' ? 'lectura' : null
+                    }}.png">
+                </picture>
+                <h6 *ngIf="task.tarea === 'QUIERO LEER ALGO'">
+                    <span>Quiero</span>
+                    <span>leer algo</span>
+                </h6>
+            </div>
+        </a>
+    </menu>
+    <a routerLink="/app" class="button rounded back">
+        <i class="fas fa-chevron-left"></i>
+    </a>
+</section>

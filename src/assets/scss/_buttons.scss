@@ -1,0 +1,132 @@
+@import 'src/assets/scss/vars';
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap');
+
+.btn {
+    display: inline-block;
+    padding: 12px 18px;
+    border-radius: 14px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    border: none;
+    transition: all 0.16s ease-out;
+    &.flex {
+        height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 900;
+        text-transform: uppercase;
+        padding: 0 32px;
+        border-radius: 32px;
+    }
+    &.big {
+        padding: 14px 48px;
+    }
+    // Status
+    &.primary {
+        background-color: $primary;
+    }
+    &.grey {
+        background-color: #C4C4C4;
+    }
+    &.white {
+        background-color: transparent;
+        color: black;
+    }
+    &:disabled {
+        background-color: #C4C4C4;
+        color: rgba($color: #000000, $alpha: 0.32);
+        cursor: no-drop;
+    }
+    &.rounded {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        font-size: 24px;
+        padding: 0px;
+    }
+    picture {
+        display: inline-block;
+        width: auto;
+        height: 16px;
+        img {
+            width: auto;
+            height: 100%;
+            display: block;
+        }
+    }
+}
+
+.button {
+    display: inline-block;
+    background-color: transparent;
+    border: none;
+    &.rounded {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background:  rgb(0,97,105);
+        background: linear-gradient(0deg, rgba(0,97,105,1) 0%, rgba(0,178,191,1) 100%);
+        text-decoration: none;
+        border: 4px solid white;
+        i {
+            font-size: 24px;
+            color: white;
+        }
+    }
+    &.orange {
+        background:  rgb(239, 128, 49);
+        background: linear-gradient(0deg, rgb(237, 28, 36) 0%, rgb(239, 128, 49) 100%);
+    }
+    &.big {
+        width: 64px;
+        height: 64px;
+    }
+    &.extra-big {
+        width: 80px;
+        height: 80px;
+    }
+    &.back {
+        position: absolute;
+        left: 12px;
+        bottom: 12px;
+    }
+}
+
+.menu-button {
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    picture {
+        display: block;
+    }
+    h6 {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        span {
+            display: inline-block;
+            width: auto;
+            font-size: 48px;
+            font-family: 'Oleo Script', cursive;
+            color: black;
+            line-height: 0.85em;
+            &.medium {
+                font-size: 36px;
+            }
+        }
+    }
+}

@@ -1,0 +1,206 @@
+<section class="content" *ngIf="!group ; else Group">
+    <h1 class="subtitle">Por favor completa la siguiente información:</h1>
+    <form [formGroup]="newGroupForm" class="new-group">
+        <div>
+            <div class="input-login-container">
+                <input
+                    type="text"
+                    placeholder="Nombre del grupo"
+                    formControlName="name"
+                    [class.danger]="newGroupForm.controls['name'].invalid && newGroupForm.controls['name'].touched"
+                    [class.success]="newGroupForm.controls['name'].touched && newGroupForm.controls['name'].valid"
+                    (change)="changeInputStatus()">
+                <errors *ngIf="newGroupForm.controls['name'].hasError('required') && newGroupForm.controls['name'].touched" message="Este campo es necesario"></errors>
+                <label>Nombre del grupo</label>
+            </div>
+        </div>
+        <div>
+            <div class="input-login-container">
+                <select
+                    placeholder="Número de alumnos"
+                    formControlName="students"
+                    [class.danger]="newGroupForm.controls['students'].invalid && newGroupForm.controls['students'].touched"
+                    [class.success]="newGroupForm.controls['students'].touched && newGroupForm.controls['students'].valid"
+                    (change)="changeInputStatus()">
+                    <option value="0" disabled>Número de alumnos</option>
+                    <option value="1">1</option>
+                    <option value="12">2</option>
+                    <option value="123">3</option>
+                    <option value="1234">4</option>
+                    <option value="12345">5</option>
+                    <option value="123456">6</option>
+                    <option value="1234567">7</option>
+                </select>
+                <errors *ngIf="newGroupForm.controls['students'].hasError('required') && newGroupForm.controls['students'].touched" message="Este campo es necesario"></errors>
+                <label>Número de alumnos</label>
+            </div>
+        </div>
+    </form>
+    <form [formGroup]="groupForm" (ngSubmit)="createGroup()" *ngIf="groups().controls.length > 0">
+        <div formArrayName="group" @ContainerInput>
+            <div class="array-inputs" *ngFor="let group of groups().controls; let index = index" [formGroupName]="index" @Input>
+                <span class="counter">{{ index + 1 }}</span>
+                <div>
+                    <div class="input-login-container">
+                        <input
+                            type="text"
+                            placeholder="Nombre"
+                            formControlName="name"
+                            [class.danger]="group.controls['name'].invalid && group.controls['name'].touched"
+                            [class.success]="group.controls['name'].touched && group.controls['name'].valid">
+                        <errors *ngIf="group.controls['name'].hasError('required') && group.controls['name'].touched" message="Este campo es necesario"></errors>
+                        <errors *ngIf="group.controls['name'].hasError('minlnegth') && group.controls['name'].touched" message="Mínimo 3 caracteres"></errors>
+                        <label>Nombre</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="input-login-container">
+                        <input
+                            type="text"
+                            placeholder="Apellido"
+                            formControlName="lastname"
+                            [class.danger]="group.controls['lastname'].invalid && group.controls['lastname'].touched"
+                            [class.success]="group.controls['lastname'].touched && group.controls['lastname'].valid">
+                        <errors *ngIf="group.controls['lastname'].hasError('required') && group.controls['lastname'].touched" message="Este campo es necesario"></errors>
+                        <errors *ngIf="group.controls['lastname'].hasError('minlnegth') && group.controls['lastname'].touched" message="Mínimo 3 caracteres"></errors>
+                        <label>Apellido</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="input-login-container">
+                        <input
+                            type="text"
+                            placeholder="Pseudónimo"
+                            formControlName="nick"
+                            [class.danger]="group.controls['nick'].invalid && group.controls['nick'].touched"
+                            [class.success]="group.controls['nick'].touched && group.controls['nick'].valid">
+                        <errors *ngIf="group.controls['nick'].hasError('required') && group.controls['nick'].touched" message="Este campo es necesario"></errors>
+                        <errors *ngIf="group.controls['nick'].hasError('minlnegth') && group.controls['nick'].touched" message="Mínimo 3 caracteres"></errors>
+                        <label>Pseudónimo</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="input-login-container">
+                        <input
+                            type="text"
+                            placeholder="Contraseña"
+                            formControlName="password"
+                            maxlength="16"
+                            [class.danger]="group.controls['password'].invalid && group.controls['password'].touched"
+                            [class.success]="group.controls['password'].touched && group.controls['password'].valid">
+                        <errors *ngIf="group.controls['password'].hasError('required') && group.controls['password'].touched" message="Este campo es necesario"></errors>
+                        <errors *ngIf="group.controls['password'].hasError('minlnegth') && group.controls['password'].touched" message="Mínimo 8 caracteres"></errors>
+                        <label>Contraseña</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-groups" *ngIf="groups().controls.length > 0" @Input>
+            <button type="button" class="btn grey btn-right" (click)="cancel()" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.16)'">Cancelar</button>
+            <button type="submit" class="btn primary" [disabled]="!groupForm.valid" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.16)'">Crear grupo</button>
+        </div>
+    </form>
+</section>
+<ng-template #Group>
+    <section class="content">
+        <form [formGroup]="newGroupForm" class="new-group">
+            <div>
+                <div class="input-login-container">
+                    <input
+                        type="text"
+                        placeholder="Nombre del grupo"
+                        formControlName="name"
+                        [class.danger]="newGroupForm.controls['name'].invalid && newGroupForm.controls['name'].touched"
+                        [class.success]="newGroupForm.controls['name'].touched && newGroupForm.controls['name'].valid"
+                        (change)="changeInputStatus()">
+                    <errors *ngIf="newGroupForm.controls['name'].hasError('required') && newGroupForm.controls['name'].touched" message="Este campo es necesario"></errors>
+                    <label>Nombre del grupo</label>
+                </div>
+            </div>
+            <div>
+                <div class="input-login-container">
+                    <select
+                        placeholder="Número de alumnos"
+                        formControlName="students"
+                        [class.danger]="newGroupForm.controls['students'].invalid && newGroupForm.controls['students'].touched"
+                        [class.success]="newGroupForm.controls['students'].touched && newGroupForm.controls['students'].valid"
+                        (change)="changeInputStatus()">
+                        <option value="0" disabled># de alumnos</option>
+                        <option value="1">1</option>
+                        <option value="12">2</option>
+                        <option value="123">3</option>
+                        <option value="1234">4</option>
+                        <option value="12345">5</option>
+                        <option value="123456">6</option>
+                        <option value="1234567">7</option>
+                    </select>
+                    <errors *ngIf="newGroupForm.controls['students'].hasError('required') && newGroupForm.controls['students'].touched" message="Este campo es necesario"></errors>
+                    <label>Número de alumnos</label>
+                </div>
+            </div>
+        </form>
+        <form [formGroup]="groupForm" *ngIf="groups().controls.length > 0">
+            <div formArrayName="group" @ContainerInput>
+                <div class="array-inputs" *ngFor="let group of groups().controls; let index = index" [formGroupName]="index" @Input>
+                    <span class="counter">{{ index + 1 }}</span>
+                    <div>
+                        <div class="input-login-container">
+                            <input
+                                type="text"
+                                placeholder="Nombre"
+                                formControlName="name"
+                                [class.danger]="group.controls['name'].invalid && group.controls['name'].touched"
+                                [class.success]="group.controls['name'].touched && group.controls['name'].valid">
+                            <errors *ngIf="group.controls['name'].hasError('required') && group.controls['name'].touched" message="Este campo es necesario"></errors>
+                            <errors *ngIf="group.controls['name'].hasError('minlnegth') && group.controls['name'].touched" message="Mínimo 3 caracteres"></errors>
+                            <label>Nombre</label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="input-login-container">
+                            <input
+                                type="text"
+                                placeholder="Apellido"
+                                formControlName="lastname"
+                                [class.danger]="group.controls['lastname'].invalid && group.controls['lastname'].touched"
+                                [class.success]="group.controls['lastname'].touched && group.controls['lastname'].valid">
+                            <errors *ngIf="group.controls['lastname'].hasError('required') && group.controls['lastname'].touched" message="Este campo es necesario"></errors>
+                            <errors *ngIf="group.controls['lastname'].hasError('minlnegth') && group.controls['lastname'].touched" message="Mínimo 3 caracteres"></errors>
+                            <label>Apellido</label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="input-login-container">
+                            <input
+                                type="text"
+                                placeholder="Pseudónimo"
+                                formControlName="nick"
+                                [class.danger]="group.controls['nick'].invalid && group.controls['nick'].touched"
+                                [class.success]="group.controls['nick'].touched && group.controls['nick'].valid">
+                            <errors *ngIf="group.controls['nick'].hasError('required') && group.controls['nick'].touched" message="Este campo es necesario"></errors>
+                            <errors *ngIf="group.controls['nick'].hasError('minlnegth') && group.controls['nick'].touched" message="Mínimo 3 caracteres"></errors>
+                            <label>Pseudónimo</label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="input-login-container">
+                            <input
+                                type="text"
+                                placeholder="Contraseña"
+                                formControlName="password"
+                                maxlength="16"
+                                [class.danger]="group.controls['password'].invalid && group.controls['password'].touched"
+                                [class.success]="group.controls['password'].touched && group.controls['password'].valid">
+                            <errors *ngIf="group.controls['password'].hasError('required') && group.controls['password'].touched" message="Este campo es necesario"></errors>
+                            <errors *ngIf="group.controls['password'].hasError('minlnegth') && group.controls['password'].touched" message="Mínimo 8 caracteres"></errors>
+                            <label>Contraseña</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-groups" *ngIf="groups().controls.length > 0" @Input>
+                <button type="button" class="btn primary" [disabled]="!groupForm.valid" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.16)'">Actualizar grupo</button>
+            </div>
+        </form>
+    </section>
+</ng-template>

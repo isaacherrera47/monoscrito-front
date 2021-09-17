@@ -1,0 +1,87 @@
+@import 'src/assets/scss/vars';
+@import 'src/assets/scss/inputs';
+@import 'src/assets/scss/buttons';
+@import 'src/assets/scss/snackbars';
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap');
+
+h1 {
+    font-family: 'Oleo Script', cursive;
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 24px;
+    color: #373A36;
+}
+
+sub {
+    display: block;
+    margin-bottom: 32px;
+    font-weight: 500;
+    text-align: center;
+    color: #373A36;
+}
+
+form {
+    width: 100%;
+    display: block;
+    > div {
+        margin-bottom: 24px;
+        &:last-of-type {
+            margin-bottom: 0px;
+        }
+        &.btn-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        &.avatares {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-flow: row wrap;
+            > span {
+                width: 100%;
+                display: block;
+                text-align: center;
+                font-weight: 300;
+            }
+        }
+    }
+}
+
+.avatar {
+    width: 160px;
+    height: 160px;
+    display: inline-block;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    picture {
+        display: block;
+        position: relative;
+        img {
+            display: block;
+        }
+    }
+    input {
+        display: none;
+    }
+    &::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        transform: scale(0);
+        transition: all 0.16s ease-out;
+        position: absolute;
+        background-color: $primary;
+        border-radius: 50%;
+        opacity: 0.32;
+    }
+    &.active {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        &::before {
+            transform: scale(1);
+        }
+    }
+}

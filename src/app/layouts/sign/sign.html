@@ -1,0 +1,16 @@
+<section [class.signin]="url === '/crear-cuenta'">
+    <main [class.signin]="url === '/crear-cuenta'">
+        <header>
+            <picture>
+                <img src="../../../assets/images/logo.svg">
+            </picture>
+        </header>
+        <router-outlet></router-outlet>
+        <footer>
+            <a [routerLink]="signRoute">{{
+                url === '/iniciar-sesion' ? '¿Nuevo usuario? Haz click aquí.' :
+                'Iniciar sesión.'
+            }}</a>
+        </footer>
+    </main>
+</section>

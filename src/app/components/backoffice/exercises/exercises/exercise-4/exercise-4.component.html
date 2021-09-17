@@ -1,0 +1,64 @@
+<section class="panel">
+    <h1 class="main-title">Busca errores</h1>
+    <form [formGroup]="form">
+        <div class="row margin">
+            <div>
+                <div class="input-login-container">
+                    <input
+                        type="text"
+                        placeholder="Nombre del ejercicio"
+                        formControlName="name"
+                        [class.danger]="form.controls['name'].invalid && form.controls['name'].touched"
+                        [class.success]="form.controls['name'].touched && form.controls['name'].valid">
+                    <errors *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched" message="Este campo es necesario"></errors>
+                    <errors *ngIf="form.controls['name'].hasError('minlnegth') && form.controls['name'].touched" message="Mínimo 2 caracteres"></errors>
+                    <label>Nombre del ejercicio</label>
+                </div>
+            </div>
+            <div>
+                <div class="input-login-container icon">
+                    <div>
+                        <input
+                            type="number"
+                            placeholder="Tiempo asignado"
+                            formControlName="seconds"
+                            [class.danger]="form.controls['seconds'].invalid && form.controls['seconds'].touched"
+                            [class.success]="form.controls['seconds'].touched && form.controls['seconds'].valid">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <errors *ngIf="form.controls['seconds'].hasError('required') && form.controls['seconds'].touched" message="Este campo es necesario"></errors>
+                    <label>Tiempo asignado (Segundos)</label>
+                </div>
+            </div>
+            <div>
+                <div class="input-login-container">
+                    <div>
+                        <select
+                            type="number"
+                            placeholder="Tiempo asignado"
+                            formControlName="type"
+                            [class.danger]="form.controls['type'].invalid && form.controls['type'].touched"
+                            [class.success]="form.controls['type'].touched && form.controls['type'].valid">
+                            <option [value]="null" disabled selected>Seleccionar tipo de actividad</option>
+                            <option value="CSZ">Diferencias C, S y Z</option>
+                            <option value="BV">Diferencias B y V</option>
+                            <option value="JG">Diferencias J y G</option>
+                        </select>
+                    </div>
+                    <errors *ngIf="form.controls['type'].hasError('required') && form.controls['type'].touched" message="Este campo es necesario"></errors>
+                    <label>Tipo de actividad</label>
+                </div>
+            </div>
+            <div>
+                <button type="button" class="btn primary" (click)="openDialog()" matRipple [matRippleColor]="'rgba(255, 255, 255, 0.08)'" [disabled]="!form.valid">Crear</button>
+            </div>
+        </div>
+        <div class="info">
+            <h2>Instrucciones:</h2>
+            <p>Crea una narrativa de al menos 25 palabras, con máximo de 35. Con esta narrativa, tu alumnos tendrán que elaborar un párrafo de al menos 150 palabras. Puedes seleccionar el tiempo en el cual los niños deberían hacer la elaboración del texto. También puedes agregar una imagen que les facilite a los niños evocar la historia que les piden elaboren.</p>
+        </div>
+        <div class="row full margin">
+            
+        </div>
+    </form>
+</section>
